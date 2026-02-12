@@ -1,0 +1,6 @@
+{
+  "version": "1",
+  "name": "api-endpoint",
+  "type": "collection",
+  "ignore": ["node_modules", ".git"]
+}

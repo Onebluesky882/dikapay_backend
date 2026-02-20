@@ -1,6 +1,9 @@
 {
   "version": "1",
-  "name": "api-endpoint",
+  "name": "dikapay_api",
   "type": "collection",
-  "ignore": ["node_modules", ".git"]
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
 }

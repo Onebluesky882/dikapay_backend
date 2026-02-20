@@ -1,0 +1,19 @@
+meta {
+  name: web_socket
+  type: ws
+  seq: 2
+}
+
+ws {
+  url: ws://localhost:3000/ws/11?v=2.0
+  body: ws
+  auth: inherit
+}
+
+body:ws {
+  name: message 1
+  type: json
+  content: '''
+    {}
+  '''
+}

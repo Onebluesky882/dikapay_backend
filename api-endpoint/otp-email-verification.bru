@@ -1,0 +1,22 @@
+meta {
+  name: otp-email-verification
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/api/auth/send-otp
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "email" : "wansing05@gmail.com"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

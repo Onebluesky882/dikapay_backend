@@ -4,6 +4,12 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { db } from "./db";
 import { schema } from "./db/schema";
+import { Resend } from "resend";
+import { generateOTP, hashOTP } from "./utils/generateOtp";
+import { emailOtps } from "./db/email-otps";
+import { and, eq } from "drizzle-orm";
+import { error } from "better-auth/api";
+import otpRoute from "./routes/otpEmail";
 const app = new Hono();
 
 app.use(
@@ -16,6 +22,11 @@ app.use(
   }),
 );
 
+const resend = new Resend(process.env.RESEND_API);
+if (!resend) {
+  console.log("no resend key");
+}
+
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: "pg",
@@ -25,8 +36,9 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
-  socialProviders: {},
 });
+
+app.route("/api/auth", otpRoute);
 
 app.all("/api/auth/*", async (c) => {
   return auth.handler(c.req.raw);

@@ -1,0 +1,30 @@
+meta {
+  name: get-me-session
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:3000/api/me
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer bZ1uoE9xK9h36H4QRcJkPfPbUdWtqcn8
+}
+
+auth:bearer {
+  token: 
+}
+
+body:json {
+  {
+    "email" : "wansing05@gmail.com"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

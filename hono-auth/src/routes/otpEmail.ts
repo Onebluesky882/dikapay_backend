@@ -98,4 +98,5 @@ otpRoute.post("/verify-otp", async (c) => {
   return c.json({ token: session.token, user: session.user });
 });
 
+// todo if login more than 3 will limit and adjust time 
 export default otpRoute;

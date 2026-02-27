@@ -1,18 +1,22 @@
 import { Hono } from "hono";
 import { auth } from "..";
+import { internalPassword } from "../utils/crypto";
 
 const getMeSession = new Hono();
 
-getMeSession.get("/", async (c) => {
-  const session = await auth.api.getSession({
-    headers: c.req.raw.headers,
-  });
-
-  if (!session) {
-    return c.json({ error: "Unauthorized" }, 401);
+getMeSession.post("/", async (c) => {
+  const { email } = await c.req.json();
+  if (!email) {
+    return c.json({ error: "Email is required" }, 400);
   }
-
-  return c.json(session.user);
+  // todo if login more than 3 will limit and adjust time
+  const session = await auth.api.signInEmail({
+    body: {
+      email,
+      password: internalPassword(email),
+    },
+  });
+  return c.json(session);
 });
 
 export default getMeSession;

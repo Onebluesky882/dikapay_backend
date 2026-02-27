@@ -5,7 +5,6 @@ import { cors } from "hono/cors";
 import { db } from "./db";
 import { schema } from "./db/schema";
 import otpRoute from "./routes/otpEmail";
-import { getSession } from "better-auth/api";
 import getMeSession from "./routes/getMeSession";
 const app = new Hono();
 

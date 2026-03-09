@@ -1,0 +1,20 @@
+meta {
+  name: upload-image
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://upload-image-cloudflare.onebluesky882.workers.dev/api/upload
+  body: file
+  auth: inherit
+}
+
+body:file {
+  file: @file(/Users/onebluesky882/Downloads/08425_009.jpg) @contentType(image/jpeg)
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

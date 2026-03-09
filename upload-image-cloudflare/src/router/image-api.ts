@@ -12,18 +12,16 @@ uploadImage.post("/", async (c) => {
   if (!file) {
     return c.json({ success: false, message: "No file uploaded" }, 400);
   }
+
   const now = new Date();
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, "0");
   const day = String(now.getDate()).padStart(2, "0");
-
-  const ext = file.name.split(".").pop();
-
-  const key = `${year}/${month}/${day}/${crypto.randomUUID()}.${ext}`;
+  const key = `images/${year}/${month}/${day}/${crypto.randomUUID()}.jpg`;
 
   await c.env.dikapay_bucket.put(key, file.stream(), {
     httpMetadata: {
-      contentType: file.type,
+      contentType: "image/jpeg",
     },
   });
 

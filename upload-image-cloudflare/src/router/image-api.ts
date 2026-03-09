@@ -17,7 +17,10 @@ uploadImage.post("/", async (c) => {
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, "0");
   const day = String(now.getDate()).padStart(2, "0");
-  const key = `images/${year}/${month}/${day}/${crypto.randomUUID()}.jpg`;
+
+    const uuid = crypto.randomUUID();
+    // todo record image
+  const key = `images/${year}/${month}/${day}/${uuid}.jpg`;
 
   await c.env.dikapay_bucket.put(key, file.stream(), {
     httpMetadata: {

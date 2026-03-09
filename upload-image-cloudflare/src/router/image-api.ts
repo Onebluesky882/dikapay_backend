@@ -5,7 +5,7 @@ type Bindings = {
 
 const uploadImage = new Hono<{ Bindings: Bindings }>();
 
-uploadImage.post("/upload", async (c) => {
+uploadImage.post("/", async (c) => {
   const formData = await c.req.formData();
 
   const file = formData.get("file") as File;
@@ -33,4 +33,4 @@ uploadImage.post("/upload", async (c) => {
   });
 });
 
-export   {uploadImage};
+export { uploadImage };

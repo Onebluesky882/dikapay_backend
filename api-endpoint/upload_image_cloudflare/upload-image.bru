@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: https://upload-image-cloudflare.onebluesky882.workers.dev/api/upload
-  body: file
+  url: http://localhost:8787/api/upload
+  body: multipartForm
   auth: inherit
+}
+
+body:multipart-form {
+  file: @file(/Users/onebluesky882/Downloads/08425_009.jpg) @contentType(File)
 }
 
 body:file {

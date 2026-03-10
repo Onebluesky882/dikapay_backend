@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { generateImageKey } from "../../utils/format-date";
+import { generateImageKey } from "../../utils/generateImageKey";
 import { createUploadUrl } from "../../utils/aws-s3";
 
 type Bindings = {
@@ -10,8 +10,8 @@ const uploadImage = new Hono<{ Bindings: Bindings }>();
 
 uploadImage.post("/", async (c) => {
   try {
-    const { userId, imageType } = await c.req.json();
-    const key = generateImageKey(imageType);
+    const { userId, imageType, mimeType } = await c.req.json();
+    const key = generateImageKey(imageType, mimeType);
     const uploadUrl = await createUploadUrl(key);
     // generate key
 

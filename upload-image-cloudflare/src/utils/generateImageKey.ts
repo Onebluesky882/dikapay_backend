@@ -1,8 +1,4 @@
-export function generateUUID() {
-  return crypto.randomUUID();
-}
-
-export function generateImageKey(imageType: string) {
+export function generateImageKey(imageType: string, mimeType: string) {
   const now = new Date();
 
   const year = now.getFullYear();
@@ -10,9 +6,7 @@ export function generateImageKey(imageType: string) {
   const day = String(now.getDate()).padStart(2, "0");
 
   const uuid = crypto.randomUUID();
+  const key = `images/${imageType}/${year}/${month}/${day}/${uuid}.${mimeType}`;
 
-  return {
-    uuid,
-    key: `images/${imageType}/${year}/${month}/${day}/${uuid}.jpg`,
-  };
+  return key;
 }

@@ -1,17 +1,23 @@
 meta {
-  name: upload-image
+  name: Presigned URL : upload-image
   type: http
   seq: 1
 }
 
 post {
   url: http://localhost:8787/api/upload
-  body: multipartForm
+  body: json
   auth: inherit
 }
 
+body:json {
+  {
+    "userId": "29aKU3K2jiuMp1WBWIqhLixtVdHXm5Oj",
+    "imageType": "profile"
+  }
+}
+
 body:multipart-form {
-  file: @file(/Users/onebluesky882/Downloads/08425_009.jpg) @contentType(File)
   userId: 29aKU3K2jiuMp1WBWIqhLixtVdHXm5Oj
   imageType: profile
 }

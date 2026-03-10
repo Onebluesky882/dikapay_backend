@@ -1,10 +1,7 @@
 import { Hono } from "hono";
 import { generateImageKey } from "../../utils/generateImageKey";
 import { createUploadUrl } from "../../utils/aws-s3";
-
-type Bindings = {
-  dikapay_bucket: R2Bucket;
-};
+import { Bindings } from "../..";
 
 const uploadImage = new Hono<{ Bindings: Bindings }>();
 
@@ -12,7 +9,7 @@ uploadImage.post("/", async (c) => {
   try {
     const { userId, imageType, mimeType } = await c.req.json();
     const key = generateImageKey(imageType, mimeType);
-    const uploadUrl = await createUploadUrl(key);
+    const uploadUrl = await createUploadUrl(key, c.env);
     // generate key
 
     // todo create new api

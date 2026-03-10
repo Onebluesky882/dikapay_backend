@@ -1,5 +1,5 @@
 {
-  "id": "d69a285b-50e9-40e5-be05-27a5a3ad6cf2",
+  "id": "6ce92445-c293-41e7-9180-0ff75afa37d4",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -435,6 +435,12 @@
         },
         "mime_type": {
           "name": "mime_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "image_type": {
+          "name": "image_type",
           "type": "text",
           "primaryKey": false,
           "notNull": true

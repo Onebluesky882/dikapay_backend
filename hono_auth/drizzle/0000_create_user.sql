@@ -60,6 +60,7 @@ CREATE TABLE "images" (
 	"user_id" text,
 	"image_key" text NOT NULL,
 	"mime_type" text NOT NULL,
+	"image_type" text NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
 	"updated_at" timestamp with time zone DEFAULT now() NOT NULL
 );

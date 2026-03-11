@@ -5,8 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1773068156292,
-      "tag": "0000_create_user",
+      "when": 1773217298276,
+      "tag": "0000_create_better_auth",
       "breakpoints": true
     }
   ]

@@ -18,7 +18,6 @@ app.use(
   }),
 );
 
-// wansing882@gmail.com
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: "pg",

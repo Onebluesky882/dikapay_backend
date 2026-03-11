@@ -23,7 +23,7 @@ export const auth = betterAuth({
     provider: "pg",
     schema,
   }),
-  trustedOrigins: ["localhost://3000", "dikapayapp://", "http://192.168.1.47"],
+  trustedOrigins: ["localhost://3000", "dikapayapp://", "http://192.168.1.65"],
   emailAndPassword: {
     enabled: true,
   },

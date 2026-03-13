@@ -2,12 +2,12 @@ package main
 
 import (
 	"log"
-
 	"github.com/gofiber/contrib/websocket"
 	"github.com/gofiber/fiber/v2"
 )
 
 func main() {
+	_ = godotenv.Load()
 	app := fiber.New()
 
 	app.Use("/ws", func(c *fiber.Ctx) error {
@@ -25,8 +25,6 @@ func main() {
 		log.Println("connected id:", id)
 		log.Println("query v:", c.Query("v"))
 
-		// websocket.Conn bindings https://pkg.go.dev/github.com/fasthttp/websocket?tab=doc#pkg-index
-
 		for {
 			mt, msg, err := c.ReadMessage()
 			if err != nil {
@@ -35,9 +33,7 @@ func main() {
 			}
 
 			log.Printf("recv from %s: %s\n", id, msg)
-
-			// echo กลับ
-			if err := c.WriteMessage(mt, msg); err != nil {
+			if err := c.WriteMessage(, msg); err != nil {
 				log.Println("write error:", err)
 				break
 			}

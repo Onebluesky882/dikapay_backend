@@ -10,7 +10,6 @@ uploadImage.post("/", async (c) => {
     const { userId, imageType, mimeType } = await c.req.json();
     const key = generateImageKey(imageType, mimeType);
     const uploadUrl = await createUploadUrl(key, c.env);
-    // generate key
 
     // todo create new api
 
